@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vorlex</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+    <header class="nav-bar">
+        <div id="navbar-light-trail"></div>
+        <div id="navbar-bg-animation"></div> 
+        <div class="nav-brand">
+            <h1><span class="animated-icon-container"><img src="titleicon.gif" alt="Animated Icon"></span> <span class="nav-title-text">Vorlex</span></h1>
+        </div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="mode-toggle" aria-label="Toggle light and dark mode">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <section id="home" class="section container">
+            <video autoplay loop muted class="video-bg" id="home-video">
+                <source src="bgvideo2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="intro-content">
+                <h1 class="welcome-text">Code the Future</h1>
+                <p class="intro-subtext"></p>
+                <button class="cta-button" onclick="window.location.href='#projects'">
+                    View My Work <i class="fa-solid fa-angle-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <section id="about" class="section container">
+            <video autoplay loop muted class="section-bg-video" id="about-video">
+                <source src="bgvideo3.mp4" type="video/mp4">
+            </video>
+            <h2>About Me</h2>
+            <p>
+                I am a passionate Computer Science student. I enjoy bringing ideas to life through code and continuously learning new technologies.
+            </p>
+        </section>
+
+        <section id="skills" class="section">
+            <video autoplay loop muted class="section-bg-video" id="skills-video">
+                <source src="bgvideo4.mp4" type="video/mp4">
+            </video>
+            <div class="container">
+                <h2 class="animated-heading">My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h3>Python</h3>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <h3>HTML5</h3>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <h3>CSS3</h3>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <h3>Machine Learning</h3>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section container">
+            <video autoplay loop muted class="section-bg-video" id="projects-video">
+                <source src="bgvideo5.mp4" type="video/mp4">
+            </video>
+            <h2 class="animated-heading">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="p1.png" alt="Project 1">
+                        <h3>Project 1</h3>
+                        <p>A brief description of your first project. Talk about what it is, what technologies you used, and what you learned.</p>
+                        <a href="#">Learn More</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="p2.png" alt="Project 2">
+                        <h3>Project 2</h3>
+                        <p>A brief description of your second project. You can talk about the challenges you faced and how you overcame them.</p>
+                        <a href="#">Learn More</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <img src="p3.png" alt="Project 3">
+                        <h3>Project 3</h3>
+                        <p>A brief description of your third project. This is a great place to showcase a personal project or a school assignment.</p>
+                        <a href="#">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <a href="https://github.com/TurboGlitch" class="github-link">
+                <i class="fa-brands fa-github"></i> View more on GitHub
+            </a>
+        </section>
+
+        <section id="contact" class="section container">
+            <video autoplay loop muted class="section-bg-video" id="contact-video">
+                <source src="bgvideo6.mp4" type="video/mp4">
+            </video>
+            <h2 class="animated-heading">Contact</h2>
+            <p>Feel free to get in touch with me. You can reach out via email or connect with me on social media.</p>
+            <div class="contact-links">
+                <a href="mailto:new111acc111@gmail.com" title="Send me an email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ali-zain-malik-764210349/" target="_blank" title="Connect with me on LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="script1.js"></script>
+</body>
+</html>
