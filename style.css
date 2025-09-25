@@ -1,0 +1,767 @@
+/* General Styles */
+:root {
+    --primary-color: #CCCCCC;
+    --secondary-color: #90CAF9;
+    --text-color: #C5C5C5;
+    --bg-color: #121212;
+    --card-bg: #303036;
+    --border-radius: 8px;
+    --font-fancy-minimal: 'Playfair Display', serif;
+    --font-italian: 'Cormorant Garamond', serif;
+}
+
+body.light-mode {
+    --primary-color: rgb(144, 144, 144);
+    --secondary-color: #1a73e8;
+    --text-color: rgb(144, 144, 144);
+    --bg-color: #f0f0f0;
+    --card-bg: #ffffff;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: var(--bg-color);
+    background: linear-gradient(-45deg, #1d1e22, #2c2d30, #1d1e22, #2c2d30);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease;
+}
+
+body.light-mode {
+    background: var(--bg-color);
+    animation: none;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 4rem);
+    max-width: 1200px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, border-radius 0.3s ease, width 0.3s ease;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 43, 46, 0.7);
+    z-index: -1;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease, border-radius 0.3s ease;
+    border-radius: 50px;
+}
+
+body.light-mode .nav-bar::before {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-bar-scrolled {
+    top: 0;
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+}
+
+.nav-bar-scrolled::before {
+    border-radius: 0;
+    background-color: rgba(60, 60, 60, 0.7);
+}
+
+body.light-mode .nav-bar-scrolled::before {
+    background-color: rgba(240, 240, 240, 0.7);
+}
+
+#navbar-bg-animation {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #3C3C3C, #4A4A4A, #3C3C3C, #4A4A4A);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    z-index: -1;
+    border-radius: 50px;
+    opacity: 0.5;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.nav-bar-scrolled #navbar-bg-animation {
+    border-radius: 0;
+}
+
+#navbar-light-trail {
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(144, 202, 249, 1) 0%, rgba(144, 202, 249, 0.5) 50%, rgba(144, 202, 249, 0) 70%);
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    filter: drop-shadow(0 0 8px rgba(144, 202, 249, 0.8));
+}
+
+#mode-toggle {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mode-toggle:hover {
+    color: var(--secondary-color);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+}
+
+.nav-brand h1 {
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+
+.nav-brand h1 .animated-icon-container {
+    display: inline-block;
+}
+
+.nav-brand h1 img {
+    height: 2.2rem;
+    width: auto;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list a {
+    font-family: 'Ubuntu', sans-serif;
+    display: block;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-list a:hover {
+    color: var(--secondary-color);
+}
+
+.nav-list a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Sections */
+.section {
+    padding: 4rem 0;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#about p {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Home Section Styles */
+#home {
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#home h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    /* Change font family here */
+    font-family: var(--font-fancy-minimal); /* Option 1: Fancy Minimal */
+    /* font-family: var(--font-italian); */ /* Option 2: Italian/Classic */
+}
+
+/* Styling for the new h1 heading color */
+#home .welcome-text {
+    color: #FFBDF7;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: italic;
+}
+
+/* Updated video background styling */
+.video-bg, .section-bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    transition: opacity 1s ease-out; /* Increased transition duration for smoother fade */
+    opacity: 0; /* <<< This is the new line we added to fix the issue. */
+}
+
+/* New classes for video visibility */
+.video-bg-visible, .section-bg-video-visible {
+    opacity: 1;
+}
+
+.intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    display: flex; /* Add this line */
+    flex-direction: column; /* Add this line */
+    align-items: center; /* Add this line */
+}
+
+.intro-subtext {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin: 0 0 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.intro-subtext.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cta-button {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    display: flex; /* Makes the button a flex container */
+    align-items: center; /* Vertically centers the content */
+    justify-content: center; /* Horizontally centers the content */
+    gap: 10px; /* Adds space between the text and icon */
+    position: relative; /* Needed for the glow effect */
+    overflow: hidden; /* Hides the glow overflow */
+}
+
+.cta-button i {
+    transition: transform 0.3s ease-in-out;
+}
+
+.cta-button::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(144, 202, 249, 0.5) 0%, transparent 70%);
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.cta-button:active::after {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 0s, opacity 0s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    background-color: var(--secondary-color);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    background-color: var(--secondary-color);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.skill-item {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.skill-item h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stars {
+    font-size: 1.5rem;
+}
+
+.stars .fa-solid.fa-star {
+    color: #683CCD;
+}
+
+.skill-item:hover .stars .fa-solid.fa-star {
+    animation: star-pulse 1s infinite ease-in-out;
+}
+
+.stars .fa-regular.fa-star {
+    color: var(--text-color);
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(#00FFFF, #00CED1, #006699, #00CED1, #00FFFF);
+    animation: rotate 4s linear infinite;
+    z-index: 0;
+}
+
+.project-card::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    z-index: 1;
+}
+
+.project-content {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem;
+}
+
+.project-content img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+}
+
+.project-card:hover::before {
+    animation: rotate 10s linear infinite;
+}
+
+.project-card:hover::after {
+    transform: scale(0.95);
+}
+
+.project-card:hover .project-content h3 {
+    color: var(--secondary-color);
+}
+
+/* Updated Project Card Button with fill-in and fade-in effects */
+.project-content a {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: transparent; /* Starts as transparent */
+    color: var(--secondary-color);
+    text-decoration: none;
+    border: 2px solid var(--secondary-color); /* Add a border */
+    border-radius: 50px;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: color 0.4s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.project-card:hover .project-content a {
+    color: var(--bg-color); /* Changes text color on hover */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-content a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    transform: scaleX(0); /* Starts with no width */
+    transform-origin: left;
+    transition: transform 0.4s ease-in-out;
+    z-index: -1;
+}
+
+.project-card:hover .project-content a::before {
+    transform: scaleX(1); /* Expands to full width on hover */
+}
+
+/* Contact Section */
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.contact-links a {
+    color: var(--primary-color);
+    font-size: 2rem;
+    transition: color 0.3s ease;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-links a:hover {
+    color: var(--secondary-color);
+    animation: contact-bounce 0.8s ease-in-out;
+}
+
+/* New styles for animated headings */
+.animated-heading {
+    letter-spacing: 0.06em;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.animated-heading .word,
+.animated-heading .char {
+    display: inline-block;
+}
+
+/* Subtle particle animation */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(var(--secondary-color) 1px, transparent 1px);
+    background-size: 15px 15px;
+    animation: particles 15s infinite;
+}
+
+/* Animation for the glowing effect */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation for the body background */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Animation for the icon */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* New keyframe animations */
+@keyframes star-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes contact-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Particle animation keyframes */
+@keyframes particles {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 150px 150px;
+    }
+}
+
+.github-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.github-link:hover {
+    color: var(--secondary-color);
+}
+
+.github-link i {
+    font-size: 1.8rem;
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.github-link:hover i {
+    transform: scale(1.1);
+}
+
+/* Media Queries */
+
+/* For tablets and smaller desktops (992px) */
+@media (max-width: 992px) {
+    .nav-bar {
+        padding: 1rem 1.5rem;
+        width: calc(100% - 3rem);
+    }
+    .nav-list a {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+    #home h1 {
+        font-size: 3rem;
+    }
+    .intro-subtext {
+        font-size: 1.3rem;
+    }
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .skill-item, .project-card {
+        padding: 1rem;
+    }
+}
+
+/* For mobile devices (768px) */
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+        top: 0;
+        width: 100%;
+        max-width: none;
+        padding: 1rem 0;
+        border-radius: 0;
+    }
+    .nav-bar::before {
+        border-radius: 0;
+    }
+    .nav-brand {
+        margin-bottom: 1rem;
+    }
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-list a {
+        padding: 0.5rem 0.75rem;
+    }
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    .section {
+        padding: 3rem 0;
+    }
+    #home h1 {
+        font-size: 2.5rem;
+    }
+    .intro-subtext {
+        font-size: 1.1rem;
+    }
+    #about p, #contact p {
+        font-size: 1rem;
+    }
+}
+
+/* For very small devices (480px) */
+@media (max-width: 480px) {
+    .nav-bar {
+        padding: 0.5rem;
+    }
+    .nav-list a {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+    .nav-brand h1 {
+        font-size: 1.2rem;
+    }
+    #mode-toggle {
+        font-size: 1.2rem;
+    }
+    #home h1 {
+        font-size: 2rem;
+    }
+    .intro-subtext {
+        font-size: 1rem;
+    }
+    .projects-grid, .skills-grid {
+        gap: 1rem;
+    }
+    .contact-links a {
+        font-size: 1.5rem;
+    }
+}
